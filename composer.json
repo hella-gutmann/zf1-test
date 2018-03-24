@@ -23,7 +23,8 @@
         "diablomedia/zendframework1-layout": "dev-master",
         "diablomedia/zendframework1-session": "dev-master",
         "phpunit/phpunit": "^6.0",
-        "phpunit/dbunit": "^3.0.2"
+        "phpunit/dbunit": "^3.0.2",
+        "sebastian/comparator": "^2.1"
     },
     "autoload": {
         "psr-0": {
