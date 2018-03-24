@@ -18,7 +18,7 @@
         "diablomedia/zendframework1-controller": "dev-master",
         "diablomedia/zendframework1-application": "dev-master",
         "diablomedia/zendframework1-db": "dev-master",
-        "diablomedia/zendframework1-dom": "dev-master",
+        "diablomedia/zendframework1-dom": "^1.0.0",
         "diablomedia/zendframework1-filter": "dev-master",
         "diablomedia/zendframework1-layout": "dev-master",
         "diablomedia/zendframework1-session": "dev-master",
