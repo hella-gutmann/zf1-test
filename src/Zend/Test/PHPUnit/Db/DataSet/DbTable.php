@@ -52,7 +52,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTable extends PHPUnit\DbUnit\DataSet\QueryT
     /**
      * @var string
      */
-    protected $_orderBy = null;
+    protected $_order = null;
 
     /**
      * @var int|null
