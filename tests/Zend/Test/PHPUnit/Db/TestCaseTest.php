@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once "Zend/Test/PHPUnit/DatabaseTestCase.php";
-require_once "Zend/Test/PHPUnit/Db/Connection.php";
-require_once "Zend/Test/DbAdapter.php";
 
 /**
  * @category   Zend

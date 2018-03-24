@@ -20,10 +20,6 @@
  * @version    $Id$
  */
 
-/**
- * @see Zend_Test_PHPUnit_Constraint_DomQuery
- */
-require_once 'Zend/Test/PHPUnit/Constraint/DomQuery.php';
 
 /**
  * @category   Zend
@@ -63,7 +59,7 @@ class Zend_Test_PHPUnit_Constraint_DomQueryTest extends PHPUnit\Framework\TestCa
             Zend_Test_PHPUnit_Constraint_DomQuery::ASSERT_CONTENT_CONTAINS, 'value1');
         $this->assertTrue($result);
     }
-    
+
     /**
      * @group issue-303
      */

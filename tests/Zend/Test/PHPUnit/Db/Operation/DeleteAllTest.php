@@ -20,9 +20,6 @@
  * @version    $Id$
  */
 
-require_once "Zend/Test/DbAdapter.php";
-
-require_once "Zend/Test/PHPUnit/Db/Operation/DeleteAll.php";
 
 /**
  * @category   Zend

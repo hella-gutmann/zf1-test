@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-require_once "Zend/Test/PHPUnit/Db/DataSet/DbRowset.php";
-require_once 'Zend/Test/PHPUnit/Db/Exception.php';
 
 /**
  * @category   Zend

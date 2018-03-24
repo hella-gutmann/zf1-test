@@ -20,14 +20,6 @@
  * @version    $Id$
  */
 
-/**
- * @see Zend_Test_PHPUnit_Db_DataSet_DataSetTestCase
- */
-require_once "Zend/Test/PHPUnit/Db/DataSet/DataSetTestCase.php";
-
-require_once "Zend/Test/DbAdapter.php";
-
-require_once "Zend/Test/DbStatement.php";
 
 /**
  * @category   Zend

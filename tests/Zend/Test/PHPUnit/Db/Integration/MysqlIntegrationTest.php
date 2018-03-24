@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once "AbstractTestCase.php";
+require_once __DIR__ . "/AbstractTestCase.php";
 
 /**
  * @category   Zend
