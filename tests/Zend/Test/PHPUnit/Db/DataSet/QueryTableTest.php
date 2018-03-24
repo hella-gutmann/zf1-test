@@ -25,8 +25,6 @@
  */
 require_once "Zend/Test/PHPUnit/Db/DataSet/DataSetTestCase.php";
 
-require_once "Zend/Db/Statement/Interface.php";
-
 require_once "Zend/Test/DbAdapter.php";
 
 require_once "Zend/Test/DbStatement.php";

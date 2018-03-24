@@ -22,10 +22,6 @@
 
 require_once "Zend/Test/PHPUnit/DatabaseTestCase.php";
 require_once "Zend/Test/PHPUnit/Db/Connection.php";
-require_once "Zend/Db/Adapter/Abstract.php";
-require_once "Zend/Db/Adapter/Pdo/Sqlite.php";
-require_once "Zend/Db/Table.php";
-require_once "Zend/Db/Table/Rowset.php";
 require_once "Zend/Test/DbAdapter.php";
 
 /**
