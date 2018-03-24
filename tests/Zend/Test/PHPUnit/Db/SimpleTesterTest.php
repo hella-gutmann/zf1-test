@@ -45,6 +45,9 @@ class Zend_Test_PHPUnit_Db_SimpleTesterTest extends PHPUnit\Framework\TestCase
         $this->assertSame($connection, $databaseTester->getConnection());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testSetupDatabase()
     {
         $testAdapter = $this->getMockBuilder('Zend_Test_DbAdapter')->getMock();

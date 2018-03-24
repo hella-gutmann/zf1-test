@@ -38,6 +38,9 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryDataSetTest extends Zend_Test_PHPUnit_Db
         $queryDataSet = new Zend_Test_PHPUnit_Db_DataSet_QueryDataSet($connectionMock);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testCreateQueryDataSetWithZendDbAdapter()
     {
         $this->decorateConnectionMockWithZendAdapter();

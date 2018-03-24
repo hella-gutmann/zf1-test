@@ -255,6 +255,9 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         $this->assertContains('FooController::barAction', $content, $content);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testAssertQueryShouldDoNothingForValidResponseContent()
     {
         $this->testCase->getFrontController()->setControllerDirectory(realpath(dirname(__FILE__)) . '/_files/application/controllers', 'default');
@@ -294,54 +297,67 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
             $this->testCase->assertNotQuery('div#foo legend.bar');
             $this->fail('Invalid assertions should throw exceptions');
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY div#foo legend.bar DOES NOT EXIST', $e->getMessage());
         }
         try {
             $this->testCase->assertQuery('div#foo legend.bogus');
             $this->fail('Invalid assertions should throw exceptions');
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY div#foo legend.bogus EXISTS', $e->getMessage());
         }
         try {
             $this->testCase->assertNotQueryContentContains('legend.bat', 'La di da');
             $this->fail('Invalid assertions should throw exceptions');
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY legend.bat DOES NOT CONTAIN content "La di da"', $e->getMessage());
         }
         try {
             $this->testCase->assertQueryContentContains('legend.bat', 'La do da');
             $this->fail('Invalid assertions should throw exceptions');
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node denoted by legend.bat CONTAINS content "La do da"', $e->getMessage());
         }
         try {
             $this->testCase->assertNotQueryContentRegex('legend.bat', '/d[a|i]/i');
             $this->fail('Invalid assertions should throw exceptions');
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY legend.bat DOES NOT CONTAIN content MATCHING "/d[a|i]/i"', $e->getMessage());
         }
         try {
             $this->testCase->assertQueryContentRegex('legend.bat', '/d[o|e]/i');
             $this->fail('Invalid assertions should throw exceptions');
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node denoted by legend.bat CONTAINS content MATCHING "/d[o|e]/i"', $e->getMessage());
         }
         try {
             $this->testCase->assertQueryCountMin('div#foo legend.bar', 3);
             $this->fail('Invalid assertions should throw exceptions');
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY div#foo legend.bar OCCURS AT LEAST 3 times', $e->getMessage());
         }
         try {
             $this->testCase->assertQueryCount('div#foo legend.bar', 1);
             $this->fail('Invalid assertions should throw exceptions');
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY div#foo legend.bar OCCURS EXACTLY 1 times', $e->getMessage());
         }
         try {
             $this->testCase->assertQueryCountMin('div#foo legend.bar', 3);
             $this->fail('Invalid assertions should throw exceptions');
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY div#foo legend.bar OCCURS AT LEAST 3 times', $e->getMessage());
         }
         try {
             $this->testCase->assertQueryCountMax('div#foo legend.bar', 1);
             $this->fail('Invalid assertions should throw exceptions');
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY div#foo legend.bar OCCURS AT MOST 1 times', $e->getMessage());
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testAssertXpathShouldDoNothingForValidResponseContent()
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
@@ -368,54 +384,67 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
             $this->testCase->assertNotXpath("//div[@id='foo']//legend[contains(@class, ' bar ')]");
             $this->fail("Invalid assertions should throw exceptions; assertion against //div[@id='foo']//legend[contains(@class, ' bar ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY //div[@id=\'foo\']//legend[contains(@class, \' bar \')] DOES NOT EXIST', $e->getMessage());
         }
         try {
             $this->testCase->assertXpath("//div[@id='foo']//legend[contains(@class, ' bogus ')]");
             $this->fail("Invalid assertions should throw exceptions; assertion against //div[@id='foo']//legend[contains(@class, ' bogus ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY //div[@id=\'foo\']//legend[contains(@class, \' bogus \')] EXISTS', $e->getMessage());
         }
         try {
             $this->testCase->assertNotXpathContentContains("//legend[contains(@class, ' bat ')]", "La di da");
             $this->fail("Invalid assertions should throw exceptions; assertion against //legend[contains(@class, ' bat ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY //legend[contains(@class, \' bat \')] DOES NOT CONTAIN content "La di da"', $e->getMessage());
         }
         try {
             $this->testCase->assertXpathContentContains("//legend[contains(@class, ' bat ')]", 'La do da');
             $this->fail("Invalid assertions should throw exceptions; assertion against //legend[contains(@class, ' bat ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node denoted by //legend[contains(@class, \' bat \')] CONTAINS content "La do da"', $e->getMessage());
         }
         try {
             $this->testCase->assertNotXpathContentRegex("//legend[contains(@class, ' bat ')]", '/d[a|i]/i');
             $this->fail("Invalid assertions should throw exceptions; assertion against //legend[contains(@class, ' bat ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY //legend[contains(@class, \' bat \')] DOES NOT CONTAIN content MATCHING "/d[a|i]/i"', $e->getMessage());
         }
         try {
             $this->testCase->assertXpathContentRegex("//legend[contains(@class, ' bat ')]", '/d[o|e]/i');
             $this->fail("Invalid assertions should throw exceptions; assertion against //legend[contains(@class, ' bat ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node denoted by //legend[contains(@class, \' bat \')] CONTAINS content MATCHING "/d[o|e]/i"', $e->getMessage());
         }
         try {
             $this->testCase->assertXpathCountMin("//div[@id='foo']//legend[contains(@class, ' bar ')]", 3);
             $this->fail("Invalid assertions should throw exceptions; assertion against //div[@id='foo']//legend[contains(@class, ' bar ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY //div[@id=\'foo\']//legend[contains(@class, \' bar \')] OCCURS AT LEAST 3 times', $e->getMessage());
         }
         try {
             $this->testCase->assertXpathCount("//div[@id='foo']//legend[contains(@class, ' bar ')]", 1);
             $this->fail("Invalid assertions should throw exceptions; assertion against //div[@id='foo']//legend[contains(@class, ' bar ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY //div[@id=\'foo\']//legend[contains(@class, \' bar \')] OCCURS EXACTLY 1 times', $e->getMessage());
         }
         try {
             $this->testCase->assertXpathCountMin("//div[@id='foo']//legend[contains(@class, ' bar ')]", 3);
             $this->fail("Invalid assertions should throw exceptions; assertion against //div[@id='foo']//legend[contains(@class, ' bar ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY //div[@id=\'foo\']//legend[contains(@class, \' bar \')] OCCURS AT LEAST 3 times', $e->getMessage());
         }
         try {
             $this->testCase->assertXpathCountMax("//div[@id='foo']//legend[contains(@class, ' bar ')]", 1);
             $this->fail("Invalid assertions should throw exceptions; assertion against //div[@id='foo']//legend[contains(@class, ' bar ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
+            $this->assertSame('Failed asserting node DENOTED BY //div[@id=\'foo\']//legend[contains(@class, \' bar \')] OCCURS AT MOST 1 times', $e->getMessage());
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRedirectAssertionsShouldDoNothingForValidAssertions()
     {
         $this->testCase->getResponse()->setRedirect('/foo');
@@ -432,6 +461,9 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         $this->testCase->assertNotRedirectRegex('/bar/i');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testHeaderAssertionShouldDoNothingForValidComparison()
     {
         $this->testCase->getResponse()->setHeader('Content-Type', 'x-application/my-foo');
@@ -498,6 +530,9 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         }
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testModuleAssertionShouldDoNothingForValidComparison()
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
@@ -515,6 +550,9 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         $this->testCase->assertNotModule('default');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testControllerAssertionShouldDoNothingForValidComparison()
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
@@ -532,6 +570,9 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         $this->testCase->assertNotController('zend-test-php-unit-foo');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testActionAssertionShouldDoNothingForValidComparison()
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
@@ -549,6 +590,9 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         $this->testCase->assertNotAction('baz');
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testRouteAssertionShouldDoNothingForValidComparison()
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
@@ -787,6 +831,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
      * @group ZF-12492
      * @internal Since header value is being cast into a string, we should only
      * need to check 0 and 0.0
+     * @doesNotPerformAssertions
      */
     public function testHeaderAssertionShouldDoNothingForValidComparisonWithZeroForValue()
     {
